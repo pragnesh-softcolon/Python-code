@@ -1,0 +1,39 @@
+Write a program to insert several rows into employee table from the keyboard.
+
+import mysql.connector as mydb
+db_name=input("Enter DatabaseName::->")
+tb_name=input("Enter TableName::->")
+
+def insert_data():
+try:
+n=int(input("Enter how many rows you want::"))
+for i in range(n):
+pycursor=pydb.cursor()
+eid1=int(input("Enter Employee id:->;:"))
+name1=input("Enter Name::->")
+sal1=int(input("Enter Salary::->"))
+pycursor.execute("insert into {0}(eid,name,sal) values({1},'{2}’,{3})".format(tb_name,eid1,name1,sal1))
+pydb.commit()
+print(pycursor.rowcount, "Row Inserted Successfully")
+pycursor.close()
+select_data()
+except:
+print("table name does not exists…….")
+else:
+print("Data sucessfully inserted…..")
+
+def select_data():
+pycursor=pydb.cursor()
+pycursor.execute("SELECT * FROM %s"%tb_name)
+res=pycursor.fetchall()
+print(res,"\n")
+pycursor.close()
+try:
+pydb=mydb.connect(host="localhost",user="root",passwd="",database=db_name)
+except:
+print("Connection error.database name does not exists.")
+else:
+try:
+insert_data()
+except:
+print("something went wrong,please try again….")

@@ -1,0 +1,25 @@
+Write a program to create a table named new_employee_tbl with the fields eno , ename , gender and salary in Sample_DB database. The datatypes of the fields are eno-int, ename-char (30), gender-char (1) and salary-float.
+
+import mysql.connector as mydb
+db_name=input("Enter DatabaseName::->;")
+tb_name=input("Enter TableName::->;")
+
+def create_table():
+try:
+pycursor=pydb.cursor()
+pycursor.execute("CREATE TABLE %s(eno int(3), ename char(30),gender
+char(1),salary float(5))"%tb_name)
+pycursor.close()
+except:
+print("table name does not exists…….")
+else:
+print("table sucessfully created…..")
+try:
+pydb=mydb.connect(host="localhost",user="root",passwd="",database=db_name)
+except:
+print("Connection error.database name does not exists.")
+else:
+try:
+create_table()
+except:
+print("something went wrong,please try again….")

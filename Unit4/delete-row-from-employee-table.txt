@@ -1,0 +1,36 @@
+Write a program to delete a row from an employeetable by accepting the employee identity number (eid) fromthe user.
+
+import mysql.connector as mydb
+db_name=input("Enter DatabaseName::->;")
+tb_name=input("Enter TableName::->")
+
+def delete_data():
+try:
+select_data()
+eid1=int(input("Enter Employee id:->:"))
+pycursor=pydb.cursor()
+pycursor.execute("Delete from {0} where eid={1}".format(tb_name,eid1))
+pydb.commit()
+print(pycursor.rowcount,"Row deleted Successfully")
+pycursor.close()
+select_data()
+except:
+print("table name does not exists…….")
+else:
+print("Data sucessfully deleted…..")
+
+def select_data():
+pycursor=pydb.cursor()
+pycursor.execute("SELECT * FROM %s"%tb_name)
+res=pycursor.fetchall()
+print(res,"\n")
+pycursor.close()
+try:
+pydb=mydb.connect(host="localhost",user="root",passwd="",database=db_name)
+except:
+print("Connection error.database name does not exists.")
+else:
+try:
+delete_data()
+except:
+print("something went wrong,please try again….")

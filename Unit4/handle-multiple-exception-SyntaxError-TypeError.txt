@@ -1,0 +1,11 @@
+2. Write a program to handle multiple exceptions like SyntaxError and TypeError.
+
+try:
+expr=eval(input("enter Expression "))#9*10/2 and 9*10/2(10/5)
+print("Expression is: ",expr)
+a=[1,2,3,4,5,6]
+b=[]
+c=a/b
+print(c)
+except (TypeError,SyntaxError):
+print("syntax error or type error ")

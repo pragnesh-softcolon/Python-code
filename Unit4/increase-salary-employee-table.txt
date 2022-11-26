@@ -1,0 +1,36 @@
+Write a program to increase the salary (sal) of an employee in the employee table by accepting the employee identity number (eid) from the user.
+
+import mysql.connector as mydb
+db_name=input("Enter DatabaseName::->")
+tb_name=input("Enter TableName::->")
+
+def update_data():
+try:
+select_data()
+eid1=int(input("Enter Employee id:->:"))
+pycursor=pydb.cursor()
+pycursor.execute("update {0} set sal=sal+(sal*5/100)
+eid={1}".format(tb_name,eid1))
+pydb.commit()
+print(pycursor.rowcount,"Row updated Successfully")
+pycursor.close()
+select_data()
+except:
+print("table name does not exists…….")
+else:
+print("Data sucessfully updated…..")
+def select_data():
+pycursor=pydb.cursor()
+pycursor.execute("SELECT * FROM %s"%tb_name)
+res=pycursor.fetchall()
+print(res,"\n")
+pycursor.close()
+try:
+pydb=mydb.connect(host="localhost",user="root",passwd="",database=db_name)
+except:
+print("Connection error.database name does not exists.")
+else:
+try:
+update_data()
+except:
+print("something went wrong,please try again….")

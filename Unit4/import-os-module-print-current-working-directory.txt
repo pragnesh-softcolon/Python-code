@@ -1,0 +1,5 @@
+Write a program to import “os” module and to print the current working directory and returns a list of all module functions.
+
+import os
+print("\n current Working directory is :",os.getcwd())
+print("\n methods of os modules are:\n",dir(os))
